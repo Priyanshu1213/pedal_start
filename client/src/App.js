@@ -14,23 +14,23 @@ const App = () => {
     }, []);
 
     const fetchTasks = async () => {
-        const response = await axios.get('http://localhost:5000/tasks');
+        const response = await axios.get('https://pedal-start-api.vercel.app/tasks');
         setTasks(response.data);
     };
 
     const addTask = async (task) => {
-        const response = await axios.post('http://localhost:5000/tasks', task);
+        const response = await axios.post('https://pedal-start-api.vercel.app/tasks', task);
         setTasks([...tasks, response.data]);
     };
 
     const updateTask = async (task) => {
-        const response = await axios.put(`http://localhost:5000/tasks/${task._id}`, task);
+        const response = await axios.put(`https://pedal-start-api.vercel.app/tasks/${task._id}`, task);
         setTasks(tasks.map(t => t._id === task._id ? response.data : t));
         setSelectedTask(null);
     };
 
     const deleteTask = async (id) => {
-        await axios.delete(`http://localhost:5000/tasks/${id}`);
+        await axios.delete(`https://pedal-start-api.vercel.app/tasks/${id}`);
         setTasks(tasks.filter(task => task._id !== id));
     };
 
